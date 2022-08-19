@@ -1,0 +1,38 @@
+{
+  "editor.formatOnSave": true,
+  "C_Cpp.formatting": "vcFormat",
+  "files.associations": {
+    "*.js": "javascript",
+    "ostream": "cpp",
+    "iostream": "cpp",
+    "array": "cpp",
+    "*.tcc": "cpp",
+    "chrono": "cpp",
+    "string": "cpp",
+    "unordered_map": "cpp",
+    "algorithm": "cpp",
+    "functional": "cpp",
+    "memory": "cpp",
+    "numeric": "cpp",
+    "random": "cpp",
+    "ratio": "cpp",
+    "system_error": "cpp",
+    "tuple": "cpp",
+    "type_traits": "cpp",
+    "cmath": "cpp",
+    "fstream": "cpp",
+    "future": "cpp",
+    "scoped_allocator": "cpp",
+    "regex": "cpp",
+    "utility": "cpp",
+    "complex": "cpp",
+    "limits": "cpp",
+    "streambuf": "cpp",
+    "thread": "cpp",
+    "valarray": "cpp"
+  },
+  "files.exclude": {
+    "**/.git": false,
+    "**/.exe": true
+  }
+}

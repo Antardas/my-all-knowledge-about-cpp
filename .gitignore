@@ -1,0 +1,6 @@
+*.js
+!spec/*.js
+
+
+*.exe
+!spec/*.exe
