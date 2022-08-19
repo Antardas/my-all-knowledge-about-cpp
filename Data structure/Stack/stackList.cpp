@@ -4,12 +4,12 @@
 using namespace std;
 
 int main() {
-    Stack <float> st;
-    st.push(1.7);
-    st.push(2.5);
-    st.push(3.5);
+    Stack <char> st;
+    st.push('a');
+    st.push('b');
+    st.push('c');
     // cout << "POP : " << st.pop() << endl;
-    // cout << "Empty : " << st.empty() << endl;
+    cout << "Empty : " << st.empty() << endl;
     // cout << "POP : " << st.pop() << endl;
     while (st.empty() == false) {
     cout << "POP : " << st.pop() << endl;

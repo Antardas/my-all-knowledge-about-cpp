@@ -27,7 +27,7 @@ public:
     // Push
 
     void push(S val) {
-        Node* newNode = new Node<S>(val);
+        Node <S>* newNode = new Node<S>(val);
         if (head == NULL) {
             head = top = newNode;
             count++;
@@ -43,7 +43,7 @@ public:
     // POP
     S pop() {
 
-        Node* <S> delNode;
+        Node <S>* delNode;
         delNode = top;
         S check;
         if (head == NULL) {
