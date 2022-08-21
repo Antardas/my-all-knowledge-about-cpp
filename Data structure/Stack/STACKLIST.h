@@ -17,11 +17,13 @@ public:
 template <typename S> class Stack {
     Node <S>* head;
     Node <S>* top;
+    Node <S>* mid;
     int count = 0;
 public:
     Stack() {
         head = NULL;
         top = NULL;
+        mid = NULL;
     }
 
     // Push
@@ -30,6 +32,7 @@ public:
         Node <S>* newNode = new Node<S>(val);
         if (head == NULL) {
             head = top = newNode;
+            mid = top;
             count++;
             return;
         }
@@ -37,6 +40,9 @@ public:
         top->next = newNode;
         newNode->prev = top;
         top = newNode;
+        if (count % 2 == 0) {
+            mid = mid->next;
+        }
         count++;
 
     }
@@ -53,10 +59,14 @@ public:
         };
         if (top == head) {
             head = top = NULL;
+            mid = NULL;
         }
         else { // there is more than element
             top = delNode->prev;
             top->next = NULL;
+            if (count % 2 == 0) {
+                mid = mid->prev;
+            }
         }
         check = delNode->value;
         delete delNode;
@@ -81,6 +91,10 @@ public:
         else {
             return top->value;
         }
+    }
+
+    S Mid() {
+        return mid->value;
     }
 
 

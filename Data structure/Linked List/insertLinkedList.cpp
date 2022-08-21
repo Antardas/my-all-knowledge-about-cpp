@@ -232,11 +232,11 @@ void deleteSpecificNode(Node*& head, int postion) {
 Node* reverseNonRecursive(Node*& head) {
     if (head == NULL) return head;
     Node* prev = NULL;
-    Node* cur = head;
-    Node* next = head->next;
+    Node* cur = head; // 1
+    Node* next = head->next; // 2
     while (true) {
-        cur->next = prev;
-        prev = cur;
+        cur->next = prev; //2 = null
+        prev = cur; // 
         cur = next;
         if (cur == NULL) break;
         next = next->next;
