@@ -17,6 +17,7 @@ class Queue {
     Node* rear;
 public:
     Queue() {
+        cout << "call Queue" << endl;
         front = NULL;
         rear = NULL;
     }
@@ -34,23 +35,33 @@ public:
     }
     // Dequeue
     int pop() {
+        int check = -1;
         if (rear == NULL) {
             cout << "Queue Underflow | There is no element in the list!!!" << endl;
         }
         Node* delNode = front;
         front = front->next;
-        int check = delNode->value;
+        if (front == NULL) {
+            rear = NULL;
+        }
+        check = delNode->value;
         delete delNode;
         return check;
     }
     // peek
-    int peek() {
-
+    int Front() {
+        return front->value;
+    }
+    int Back() {
+        return rear->value;
     }
     // empty
+    bool empty() {
+        if (front != NULL) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 };
-
-int main() {
-
-    return 0;
-}
