@@ -2,19 +2,20 @@
 
 using namespace std;
 
-class Node {
+
+template <typename N> class Node {
 public:
-    int value;
+    N value;
     Node* next;
-    Node(int val) {
+    Node(N val) {
         value = val;
         next = NULL;
     }
 };
 
-class Queue {
-    Node* front;
-    Node* rear;
+template <typename Q>class Queue {
+    Node <Q>* front;
+    Node <Q>* rear;
 public:
     Queue() {
         cout << "call Queue" << endl;
@@ -23,8 +24,8 @@ public:
     }
 
     // Enqueue
-    void push(int val) {
-        Node* newNode = new Node(val);
+    void push(Q val) {
+        Node<Q>* newNode = new Node<Q>(val);
         if (front == NULL) {
             front = newNode;
             rear = newNode;
@@ -34,12 +35,12 @@ public:
         rear = rear->next;
     }
     // Dequeue
-    int pop() {
-        int check = -1;
+    Q pop() {
+        Q check;
         if (rear == NULL) {
             cout << "Queue Underflow | There is no element in the list!!!" << endl;
         }
-        Node* delNode = front;
+        Node <Q>* delNode = front;
         front = front->next;
         if (front == NULL) {
             rear = NULL;
@@ -49,10 +50,10 @@ public:
         return check;
     }
     // peek
-    int Front() {
+    Q Front() {
         return front->value;
     }
-    int Back() {
+    Q Back() {
         return rear->value;
     }
     // empty

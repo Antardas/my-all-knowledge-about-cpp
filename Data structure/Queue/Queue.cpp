@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
 
-    Queue qu;
+    Queue <int> qu;
     int n;
     cin >> n;
     for (int i = 0; i < n; i++) {
