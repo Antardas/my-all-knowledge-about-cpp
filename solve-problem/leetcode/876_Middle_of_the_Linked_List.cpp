@@ -13,7 +13,28 @@
 
 using namespace std;
 
-int main(){
+class Solution {
+public:
+    int list_size(ListNode* head) {
+        int count = 0;
+        while (head != NULL) {
+            head = head->next;
+            count++;
+        }
+        return count;
+    }
+    ListNode* middleNode(ListNode* head) {
+        int size = list_size(head);
+        int mid = size / 2;
+        for (int i = 1; i <= mid; i++) {
+            head = head->next;
+        }
+        return head;
+    }
+};
+
+
+int main() {
 
    return 0;
 }
