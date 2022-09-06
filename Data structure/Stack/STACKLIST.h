@@ -1,23 +1,23 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-template<typename N>  class Node {
+template<typename N>  class NodeQueue {
 public:
     N value;
-    Node* prev;
-    Node* next;
+    NodeQueue* prev;
+    NodeQueue* next;
 
-    Node(N val) {
+    NodeQueue(N val) {
         this->value = val;
-        Node* prev = NULL;
-        Node* next = NULL;
+        NodeQueue* prev = NULL;
+        NodeQueue* next = NULL;
     }
 };
 
 template <typename S> class Stack {
-    Node <S>* head;
-    Node <S>* top;
-    Node <S>* mid;
+    NodeQueue <S>* head;
+    NodeQueue <S>* top;
+    NodeQueue <S>* mid;
     int count = 0;
 public:
     Stack() {
@@ -29,7 +29,7 @@ public:
     // Push
 
     void push(S val) {
-        Node <S>* newNode = new Node<S>(val);
+        NodeQueue <S>* newNode = new NodeQueue<S>(val);
         if (head == NULL) {
             head = top = newNode;
             mid = top;
@@ -49,7 +49,7 @@ public:
     // POP
     S pop() {
 
-        Node <S>* delNode;
+        NodeQueue <S>* delNode;
         delNode = top;
         S check;
         if (head == NULL) {

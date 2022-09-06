@@ -3,19 +3,19 @@
 using namespace std;
 
 
-template <typename N> class Node {
+template <typename N> class NodeQueue {
 public:
     N value;
-    Node* next;
-    Node(N val) {
+    NodeQueue* next;
+    NodeQueue(N val) {
         value = val;
         next = NULL;
     }
 };
 
 template <typename Q>class Queue {
-    Node <Q>* front;
-    Node <Q>* rear;
+    NodeQueue <Q>* front;
+    NodeQueue <Q>* rear;
 public:
     Queue() {
         cout << "call Queue" << endl;
@@ -25,7 +25,7 @@ public:
 
     // Enqueue
     void push(Q val) {
-        Node<Q>* newNode = new Node<Q>(val);
+        NodeQueue<Q>* newNode = new NodeQueue<Q>(val);
         if (front == NULL) {
             front = newNode;
             rear = newNode;
@@ -40,7 +40,7 @@ public:
         if (rear == NULL) {
             cout << "Queue Underflow | There is no element in the list!!!" << endl;
         }
-        Node <Q>* delNode = front;
+        NodeQueue <Q>* delNode = front;
         front = front->next;
         if (front == NULL) {
             rear = NULL;
