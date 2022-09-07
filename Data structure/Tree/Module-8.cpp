@@ -337,6 +337,56 @@ void average_level(TreeNode* root) {
     }
 }
 
+// Ans 9:
+
+bool is_unival(TreeNode* root) {
+    if (!root) {
+        return true;
+    }
+
+
+
+    if (root->rightChild != NULL
+        && root->data != root->leftChild->data)
+        return false;
+
+    if (root->rightChild != NULL
+        && root->data != root->rightChild->data)
+        return false;
+
+    return is_unival(root->leftChild)
+        && is_unival(root->rightChild);
+}
+
+
+
+vector<int> ans;
+
+
+void traverseTree(TreeNode* root)
+{
+    if (root != NULL) {
+        traverseTree(root->leftChild);
+        ans.push_back(root->data);
+        traverseTree(root->rightChild);
+    }
+}
+
+int second_minimum(TreeNode* root)
+{
+    traverseTree(root);
+
+    sort(ans.begin(), ans.end());
+
+    for (int i = 0; i < ans.size() - 1; i++)
+    {
+        if (ans[i] != ans[i + 1]) {
+            return ans[i + 1];
+        }
+    }
+    return -1;
+}
+
 
 
 int main() {
