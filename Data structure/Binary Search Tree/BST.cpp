@@ -44,6 +44,25 @@ TreeNode* insertionBST(TreeNode* root, int value) {
     return root;
 }
 
+// 
+TreeNode* searchBST(TreeNode* root, int value) {
+    if (root == NULL) {
+        return NULL;
+    }
+
+    if (root->data == value) {
+        return root;
+    }
+
+    else if (root->data > value) {
+        searchBST(root->leftChild, value);
+    }
+    else {
+        searchBST(root->rightChild, value);
+
+    }
+}
+
 
 int main() {
     int n;
@@ -61,6 +80,16 @@ int main() {
     inOrderTraversal(root, output);
 
     cout << endl << endl << output << endl;
+    int searchValue;
+    cout << "Enter the you want to search : ";
+    cin >> searchValue;
+    TreeNode* foundNode = searchBST(root, searchValue);
+    if (foundNode == NULL) {
+        cout << "doesn't exit this BST" << endl;
+    }
+    else {
+        cout << "Value is exist in this BST";
+    }
     return 0;
 }
 
@@ -68,4 +97,8 @@ int main() {
 /*
 17
 25 20 36 10 22 30 40 5 12 28 38 48 1 8 15 45 50
+
+
+9
+11 5 9 43 34 1 2 7 21
  */
