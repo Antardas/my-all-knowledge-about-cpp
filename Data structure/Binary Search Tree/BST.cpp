@@ -63,6 +63,46 @@ TreeNode* searchBST(TreeNode* root, int value) {
     }
 }
 
+TreeNode* inOrderSuccessor(TreeNode* root, int value) {
+    TreeNode* currentNode = root;
+
+
+    while (currentNode->leftChild != NULL && currentNode != NULL) {
+        currentNode = currentNode->leftChild;
+    }
+    return currentNode;
+}
+
+// 
+
+TreeNode* deleteBST(TreeNode* root, int value) {
+    if (value < root->data) {
+        root->leftChild = deleteBST(root->leftChild, value);
+    }
+    else if (value > root->data) {
+        root->rightChild = deleteBST(root->rightChild, value);
+    }
+    else { // when it's finally get value
+        if (root->leftChild == NULL) {
+            TreeNode* tempNode = root->rightChild;
+            free(root);
+            return tempNode;
+        }
+        else if (root->rightChild == NULL) {
+            TreeNode* tempNode = root->leftChild;
+            free(root);
+            return tempNode;
+        }
+        else {
+            TreeNode* tempNode = inOrderSuccessor(root, value);
+            root->data = tempNode->data;
+            tempNode->rightChild = deleteBST(root->rightChild, tempNode->data);
+        }
+
+        return root;
+    }
+}
+
 
 int main() {
     int n;
@@ -72,7 +112,6 @@ int main() {
     for (int i = 0; i < n; i++)
     {
         int value;
-        cout << "Value : ";
         cin >> value;
         root = insertionBST(root, value);
     }
@@ -80,16 +119,25 @@ int main() {
     inOrderTraversal(root, output);
 
     cout << endl << endl << output << endl;
-    int searchValue;
+    int key;
     cout << "Enter the you want to search : ";
-    cin >> searchValue;
-    TreeNode* foundNode = searchBST(root, searchValue);
+    cin >> key;
+    TreeNode* foundNode = searchBST(root, key);
     if (foundNode == NULL) {
         cout << "doesn't exit this BST" << endl;
     }
     else {
-        cout << "Value is exist in this BST";
+        cout << "Value is exist in this BST" << endl;
     }
+
+    cout << "Enter the value you want to Delete : ";
+    cin >> key;
+    TreeNode* deletedNode = deleteBST(root, key);
+    output = "";
+    inOrderTraversal(root, output);
+
+    cout << endl << endl << output << endl;
+
     return 0;
 }
 
